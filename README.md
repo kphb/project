@@ -2,15 +2,7 @@
 시큐리티를 이용해서 권한별로 페이지를 나누고 CRUD를 할 수 있도록 했습니다.
 
 ---
-### 개발환경
-* IDE - eclipse
-* 언어 - Java
-* 데이터베이스 - Oracle
-* 프레임워크 - Spring, MyBatis
-* 서버 - Apache Tomcat 8.5
-
----
-### 기능설명
+### 프로젝트 설명
 이 프로젝트는 크게 3가지 페이지로 나눌 수 있습니다.
 
 #### 1. 모두가 접근가능한 메인페이지
@@ -37,6 +29,14 @@
     * 조회, 삭제
   * 문의내역
     * 조회, 답변작성, 수정, 삭제
+
+---
+### 개발환경
+* IDE - eclipse
+* 언어 - Java
+* 데이터베이스 - Oracle
+* 프레임워크 - Spring, MyBatis
+* 서버 - Apache Tomcat 8.5
 
 ---
 ### 사용한 테이블
@@ -114,3 +114,7 @@ CREATE TABLE TBL_REQUEST
 );
 CREATE SEQUENCE SEQ_REQUEST;
 ```
+* ERD
+
+---
+### 기능 설명
