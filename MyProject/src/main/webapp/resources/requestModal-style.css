@@ -1,0 +1,48 @@
+@charset "UTF-8";
+div.requestModal {
+    position: relative;
+    z-index: 1;
+    display: none;
+}
+
+div.modalBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+}
+
+div.modalContent {
+    position: fixed;
+    top: 20%;
+    left: calc(50% - 250px);
+    width: 500px;
+    height: 300px;
+    padding: 20px 10px;
+    background: #fff;
+    border: 2px solid #666;
+}
+
+div.modalContent textarea {
+    font-size: 16px;
+    font-family: '맑은 고딕', verdana;
+    padding: 10px;
+    margin: 10px 0;
+    width: 470px;
+    height: 160px;
+}
+
+div.modalContent button {
+    font-size: 15px;
+    padding: 5px 10px;
+    margin: 5px 0;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+div.modalContent button.modal_cancel {
+    margin-left: 20px;
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 엑세스 거부시 실행될 빈과 그 경로 -->	
+	<bean id="customAccessDenied" class="com.project.security.CustomAccessDeniedHandler"></bean>
+	
+	<!-- 로그인 성공시 불러오는 빈과 그 경로 -->
+	<bean id="customLoginSuccess" class="com.project.security.CustomLoginSuccessHandler"></bean>
+	
+	<!-- 암호 인코딩 할 빈과 그 경로 -->
+	<!-- BCryptPasswordEncoder는 스프링 시큐리티 API안에 포함 -->
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	
+	<!-- DB이용해서 회원 정보와 권한 불러오기 위한 빈과 그 경로 -->
+	<bean id="customUserDetailsService" class="com.project.security.CustomUserDetailsService"></bean>
+	
+	<security:http auto-config="true" use-expressions="true">
+	
+	    <!-- 로그인된 상태에서는 로그인이나 회원가입 화면에 접근 못하도록 함 -->
+		<security:intercept-url pattern="/sign/customLogin" access="isAnonymous()" />
+		<security:intercept-url pattern="/sign/signUp" access="isAnonymous()" />
+		
+		<!-- 회원페이지는 회원권한만 -->
+		<security:intercept-url pattern="/member/**" access="hasRole('ROLE_MEMBER')" />
+		
+		<!-- 관리자페이지는 관리자권한만 -->
+		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+        
+        <!-- 로그인이 안된 상태에서 권한이 필요한 페이지 접근시 해당 페이지로 연결 -->
+        <!-- *username과 password parameter를 설정해주지 않으면 데이터가 있어도 customUserDetailsService에 전달되는게 없음* -->
+        <!-- 로그인 실패하면 자동으로 로그인페이지로 연결 -->
+        <!-- 로그인 성공하면 customLoginSuccess 연결 -->
+        <security:form-login 
+        	username-parameter="user_id" 
+        	password-parameter="user_pw" 
+			login-page="/sign/customLogin" 
+        	authentication-success-handler-ref="customLoginSuccess" />
+        	
+       	<!-- 자동로그인 유지시간 -->
+       	<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
+        
+        <!-- 권한없는 url로 접근하면 customAccessDenied 연결 -->
+        <security:access-denied-handler ref="customAccessDenied"/>
+        
+        <!-- 로그아웃을 위한 설정 -->
+		<!-- logout-url 로그아웃페이지에서 form태그 action값 -->
+		<!-- 로그아웃 성공시 "/main/main" 이동, 쿠키&세션 삭제 -->
+		<security:logout logout-url="/logout" logout-success-url="/main/main" 
+			delete-cookies="true" invalidate-session="true"/>
+        
+    </security:http>
+    
+    <security:authentication-manager>
+    
+    	<!-- DB와 연동되어 인증, 권한 정보를 해당 레퍼런스에서 가져오게 함 -->
+        <security:authentication-provider user-service-ref="customUserDetailsService">
+        
+            <!-- 비밀번호 암호화를 위한 설정 -->
+            <security:password-encoder ref="bcryptPasswordEncoder"/>
+            
+        </security:authentication-provider>
+        
+    </security:authentication-manager>
+
+</beans>

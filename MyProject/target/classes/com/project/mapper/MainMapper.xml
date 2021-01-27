@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.project.mapper.MainMapper">
+	
+	<!-- 정렬(array) -->
+	<sql id="array">
+		<if test="array != null">
+			<if test="array == 'l'.toString()">order by bnum desc</if>
+			<if test="array == 'h'.toString()">order by cnt desc</if>
+			<if test="array == 'r'.toString()">order by count(r.bnum) desc</if>
+		</if>
+	</sql>
+	
+	<!-- 검색(type&keyword) -->
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 't'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'c'.toString()">
+							content like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'a'.toString()">
+							area like '%'||#{keyword}||'%'
+						</when>
+						
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
+	<!-- 데이터 조회(검색+페이징) -->
+	<select id="selectList" resultType="com.project.domain.AdminVO">
+		<![CDATA[	
+		select * from 
+			(
+    			select  
+    			rownum as rn, a.* from 
+    			(
+        			select a.bnum,title,content,area,startdate,enddate,thumbimg,remove,cnt,count(r.bnum) as rec 
+                    from tbl_admin a, tbl_recommend r 
+                    where a.bnum=r.bnum(+) 
+                    group by a.bnum,title,content,area,startdate,enddate,thumbimg,remove,cnt
+                    ]]>
+                    <include refid="array"></include>
+                    <![CDATA[ 
+       			)
+       			a where 
+       			]]>
+				
+				<include refid="criteria"></include>
+				
+				<![CDATA[ 
+                 remove = 'n' and rownum <= #{page} * #{amount}
+    		) 
+    		where rn > (#{page}-1) * #{amount}
+    		]]>
+	</select>
+	
+	<!-- 각 데이터 개수(remove='n'인 것만) -->
+	<select id="listCnt" resultType="Integer">
+		select count(bnum) from tbl_admin where <include refid="criteria"></include> remove = 'n'
+	</select>
+
+</mapper>

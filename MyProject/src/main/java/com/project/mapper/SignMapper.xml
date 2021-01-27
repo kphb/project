@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.project.mapper.SignMapper">
+  
+  	<resultMap type="com.project.domain.MemberVO" id="memberMap">
+        <id property="userid" column="userid"/>
+        <result property="user_id" column="user_id"/>
+        <result property="user_pw" column="user_pw"/>
+        <result property="user_name" column="user_name"/>
+        <result property="regDate" column="regdate"/>
+        <result property="updateDate" column="updatedate"/>
+        <collection property="authList" resultMap="authMap"/>
+    </resultMap>
+    
+    <resultMap type="com.project.domain.AuthVO" id="authMap">
+        <result property="user_id" column="user_id"/>
+        <result property="auth" column="auth"/>
+    </resultMap>
+    
+    <select id="selectOne" resultMap="memberMap">
+        select mem.user_id,user_pw,user_name,enabled,regdate,updatedate,auth
+        from tbl_member mem 
+        left outer join tbl_member_auth auth 
+        on mem.user_id = auth.user_id 
+        where mem.user_id = #{user_id}
+    </select>
+    
+    <!-- 아이디 중복확인 -->
+	<select id="checkUser_id" resultType="boolean">
+		select count(user_id) from tbl_member where user_id = #{user_id}
+	</select>
+    
+   	<!-- 회원가입 -->
+	<insert id="signUp">
+		insert into tbl_member(user_id, user_pw, user_name) values(#{user_id}, #{user_pw}, #{user_name})
+	</insert>
+	
+	<!-- 권한부여 -->
+	<insert id="signUp_auth">
+		insert into tbl_member_auth(user_id, auth) values(#{user_id}, #{auth})
+	</insert>
+	
+	<!-- 비밀번호 찾기(아이디&이름으로 존재하는 회원인지 조회) -->
+	<select id="checkMember" resultType="boolean">
+		select count(user_id) from tbl_member where user_id = #{user_id} and user_name = #{user_name}
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="updateUser_pw">
+		update tbl_member set user_pw = #{user_pw}, user_name = #{user_name} where user_id = #{user_id}
+	</update>
+		
+  
+  </mapper>
