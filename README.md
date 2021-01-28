@@ -35,7 +35,7 @@
 * IDE - eclipse
 * 언어 - Java
 * 데이터베이스 - Oracle
-* 프레임워크 - Spring, MyBatis
+* 프레임워크 - Spring
 * 서버 - Apache Tomcat 8.5
 
 ---
