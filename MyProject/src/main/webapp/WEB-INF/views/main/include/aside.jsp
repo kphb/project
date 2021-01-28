@@ -73,6 +73,8 @@
 	                success: function () {
 	                	alert("문의하신 내용은 회원페이지에서 확인해주세요")
 	                	$(".requestModal").fadeOut(200);
+	                	$("input[name=title]").val("");
+	                	$("textarea[name=content]").val("");
 	                }
 	            })
 	        });
