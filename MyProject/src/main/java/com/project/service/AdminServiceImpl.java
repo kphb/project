@@ -120,6 +120,11 @@ public class AdminServiceImpl implements AdminService{
 	public void autoRemove(String user_id) {
 		mapper.autoRemove(user_id);
 	}
+	
+	@Override
+	public void recRemove(String user_id) {
+		mapper.recRemove(user_id);
+	}
 
 	@Override
 	public List<RequestVO> requestList(Criteria cri) {
@@ -160,7 +165,5 @@ public class AdminServiceImpl implements AdminService{
 	public void deleteResponse(Long rnum) {
 		mapper.deleteResponse(rnum);
 	}
-
-
 
 }
