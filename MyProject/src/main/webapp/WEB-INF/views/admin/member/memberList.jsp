@@ -54,7 +54,7 @@ h5{text-align: center;}
 		<div id="container_box">
 			<h3>회원 정보</h3>
 			<hr>
-			<h5>회원정보를 삭제해도 해당 회원의 Q&A는 삭제되지 않습니다</h5>
+			<h5>회원정보를 삭제하면 해당 회원의 추천과 문의내역도 같이 삭제됩니다</h5>
 			<hr>
 				<div id="board">
 				

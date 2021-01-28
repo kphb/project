@@ -150,6 +150,11 @@
 		delete tbl_recommend where user_id = #{user_id}
 	</delete>
 	
+	<!-- 회원탈퇴(문의삭제) -->
+	<delete id="reqRemove">
+		delete tbl_request where user_id = #{user_id}
+	</delete>
+	
 	<!-- 요청글 전체조회 -->
 	<select id="requestList" resultType="com.project.domain.RequestVO">
 		<![CDATA[

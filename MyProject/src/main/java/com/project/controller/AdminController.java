@@ -357,6 +357,7 @@ public class AdminController {
 		
 		for(String i : chArr) {
 			service.recRemove(i); //회원아이디로 추천한 내역 삭제
+			service.reqRemove(i); //회원아이디로 문의한 내역 삭제
 			service.autoRemove(i); //연결된 user_id 먼저 삭제
 			service.memberRemove(i); //user_id 삭제
 			log.info("=====관리자: 회원id '"+i+"' 탈퇴=====");

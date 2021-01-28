@@ -75,6 +75,9 @@ public interface AdminMapper {
 	
 	//회원탈퇴(추천삭제)
 	public void recRemove(String user_id);
+	
+	//회원탈퇴(문의삭제)
+	public void reqRemove(String user_id);
 		
 	//요청글 전체조회
 	public List<RequestVO> requestList(Criteria cri);

@@ -125,6 +125,11 @@ public class AdminServiceImpl implements AdminService{
 	public void recRemove(String user_id) {
 		mapper.recRemove(user_id);
 	}
+	
+	@Override
+	public void reqRemove(String user_id) {
+		mapper.reqRemove(user_id);
+	}
 
 	@Override
 	public List<RequestVO> requestList(Criteria cri) {

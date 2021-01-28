@@ -58,7 +58,6 @@
 			 <hr>
 			 <h5>내용을 보려면 제목을 클릭하세요</h5>
 			 <h5>원글을 삭제하면 답변도 삭제됩니다</h5>
-			 <h5>회원이 탈퇴해도 글은 남아있지만 더이상 답변할 수 없습니다</h5>
 			 <hr>
 			 
 		 	 <div id="board">
@@ -205,10 +204,10 @@
 											})
 											
 											//답변하기 클릭
-											/* $("#response_${request.rnum}_btn").click(function(){
-												$("div.response_${request.rnum}").css("display","block");
+											 $("#response_${request.rnum}_btn").click(function(){
+												$("div.response_${request.rnum}").css("display","inline-block");
 												$("#response_${request.rnum}_btn").css("display","none");
-											}) */
+											})
 											
 											//취소버튼 클릭
 											$("#reset_${request.rnum}_btn").click(function(){
@@ -297,7 +296,7 @@
 										<c:when test="${request.grpord == 0}">
 											<c:out value="${request.user_id}" />
 											
-											<script type="text/javascript">
+											<!-- <script type="text/javascript">
 												$("#response_${request.rnum}_btn").click(function(){
 													$.ajax({
 														url: "/admin/member/request/check_id",
@@ -316,7 +315,7 @@
 														}
 													})
 												})
-											</script>
+											</script> -->
 											
 										</c:when>
 									</c:choose>
