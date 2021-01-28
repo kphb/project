@@ -120,9 +120,9 @@ CREATE SEQUENCE SEQ_REQUEST;
 
 ---
 ### 기능 구현
-기능 구현은 프로젝트 시연 영상을 통해 보여드리겠습니다.
+기능 구현은 시연 영상을 통해 보여드리겠습니다.
 
-https://youtu.be/yF0FSMgxf_8
+[![프로젝트 시연 영상](http://img.youtube.com/vi/yF0FSMgxf_8/0.jpg)](https://youtu.be/yF0FSMgxf_8?t=0s) 
 
 ---
 ### 프로젝트를 마치며
