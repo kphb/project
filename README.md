@@ -32,6 +32,7 @@
 
 ---
 ### 개발환경
+* OS - Windows10
 * IDE - eclipse
 * 언어 - Java
 * 데이터베이스 - Oracle
