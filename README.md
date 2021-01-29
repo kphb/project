@@ -33,7 +33,7 @@
 ---
 ### 개발환경
 * OS - Windows10
-* IDE - eclipse
+* IDE - Eclipse
 * 언어 - Java
 * 데이터베이스 - Oracle
 * 프레임워크 - Spring
