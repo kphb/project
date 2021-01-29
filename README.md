@@ -127,5 +127,8 @@ CREATE SEQUENCE SEQ_REQUEST;
 [![프로젝트 시연 영상](http://img.youtube.com/vi/yF0FSMgxf_8/0.jpg)](https://youtu.be/yF0FSMgxf_8?t=0s) 
 
 ---
+### 프로젝트 보완점
+
+---
 ### 프로젝트를 마치며
 
