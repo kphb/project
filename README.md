@@ -34,6 +34,8 @@
 ### 개발환경
 * OS - Windows10
 * IDE - Eclipse
+* Front-end
+  * HTML/CSS, JavaScript, jQuery, Bootstrap
 * 언어 - Java
 * 데이터베이스 - Oracle
 * 프레임워크 - Spring
