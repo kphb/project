@@ -122,14 +122,14 @@ CREATE SEQUENCE SEQ_REQUEST;
 ![image](https://user-images.githubusercontent.com/75934431/106018389-cd79b100-6104-11eb-96ca-558f5ddf2e83.png)
 
 ---
-### 구현기능 - 영상
+### 기능구현- 영상
 먼저 시연 영상을 통해 전체적인 흐름을 보여드리겠습니다.<br>
 순서는 '메인페이지->회원페이지->관리자페이지->각 권한 접근시도' 입니다.
 
 [![프로젝트 시연 영상](http://img.youtube.com/vi/yF0FSMgxf_8/0.jpg)](https://youtu.be/yF0FSMgxf_8?t=0s) 
 
 ---
-### 구현기능 - 이미지
+### 기능구현 - 이미지
 #### 1. 메인페이지
 
 #### 2. 회원페이지
