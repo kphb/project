@@ -127,8 +127,7 @@ CREATE SEQUENCE SEQ_REQUEST;
 순서는 '메인페이지->회원페이지->관리자페이지->각 권한 접근시도' 입니다.
 
 [![프로젝트 시연 영상](http://img.youtube.com/vi/yF0FSMgxf_8/0.jpg)](https://youtu.be/yF0FSMgxf_8?t=0s) 
-
----
+<br><br>
 #### - ck에디터로 게시글 작성
 위지윅에디터 중 ck에디터를 활용했습니다. 내용을 입력하고 이미지를 업로드한 후에 소스를 클릭하면 입력한 텍스트와 등록한 사진의 주소, 사이즈를 태그와 같이 확인할 수 있습니다.
 ![image](https://user-images.githubusercontent.com/75934431/110603864-cc8b7300-81ca-11eb-9560-3a2debce28d4.png)
